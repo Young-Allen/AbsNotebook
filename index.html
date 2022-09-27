@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberNotebook</title>
+
+    <link href="css/bootstrap.min.css?v=3.3.7" rel="stylesheet" />
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet" />
+    <link href="css/animate.css" rel="stylesheet" />
+    <link href="css/style.css?v=4.1.0" rel="stylesheet" />
+    <link href="css/plugins/jsTree/style.min.css" rel="stylesheet">
+    <link href="css/jquery.contextMenu.min.css" rel="stylesheet" />
+
+    <!-- 全局js -->
+    <script src="./js/jquery.min.js?v=2.1.4"></script>
+    <script src="./js/bootstrap.min.js?v=3.3.7"></script>
+    <script src="./js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="./js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="./js/plugins/contextMenu/jquery.contextMenu.min.js"></script>
+    <!-- jsTree plugin javascript -->
+    <script src="./js/plugins/jsTree/jstree.js"></script>
+    <!-- 自定义js -->
+    <script src="./js/hplus.js"></script>
+    <script type="text/javascript" src="./js/contabs.js"></script>
+    <script src="./js/content.js"></script>
+
+
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow: hidden;">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-static-side">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <div class="ibox-tools" style="text-align: center;">
+                                <p style="width:100%;">文件</p>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div id="using_json"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="ibox-title choose-file" style="text-align: center;">
+                        <a style="width:100%;" class="open-folder">打开文件夹</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <!-- 顶端主题栏 -->
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0;">
+                    <div class="navbar-header">
+                        <!-- navbar-minimalize -->
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary close-left-bar" href="#"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li class="dropdown hidden-xs">
+                            <a class="right-sidebar-toggle" aria-expanded="false"> <i class="fa fa-tasks"></i> 主题 </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- 主题页面栏 -->
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" width="80%" height="100%" src="form_markdown.html?v=4.1" frameborder="0" data-id="form_markdown.html" seamless></iframe>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+
+        <!--右侧边栏开始-->
+        <div id="right-sidebar">
+            <div class="sidebar-container">
+                <ul class="nav nav-tabs navs-3">
+                    <li class="active">
+                        <a data-toggle="tab" href="#tab-1"> <i class="fa fa-gear"></i> 主题 </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="skin-setttings">
+                            <div class="setings-item default-skin nb">
+                                <span class="skin-name">
+                                    <a href="#" class="s-skin-0">
+                                        默认皮肤
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="setings-item blue-skin nb">
+                                <span class="skin-name">
+                                    <a href="#" class="s-skin-1">
+                                        蓝色主题
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--右侧边栏结束-->
+    </div>
+
+    <script type="module" src="/main.js"></script>
+
+    <script>
+        //按钮点击显示和隐藏左侧侧边栏
+        let close_left_bar = document.querySelector('.close-left-bar')
+        let row = document.querySelector('.row')
+        close_left_bar.onclick = function() {
+            if (row.style.display === 'none') {
+                row.style.display = 'block'
+            } else {
+                row.style.display = 'none'
+            }
+        }
+
+        // jstree的视图
+        let jsTree = document.getElementById('jstree1')
+        $(jsTree).jstree({
+            'core': {
+                'check_callback': true
+            },
+            'plugins': ['types', 'dnd'],
+            'types': {
+                'default': {
+                    'icon': 'fa fa-folder'
+                },
+                'html': {
+                    'icon': 'fa fa-file-code-o'
+                },
+                'svg': {
+                    'icon': 'fa fa-file-picture-o'
+                },
+                'css': {
+                    'icon': 'fa fa-file-code-o'
+                },
+                'img': {
+                    'icon': 'fa fa-file-image-o'
+                },
+                'js': {
+                    'icon': 'fa fa-file-text-o'
+                }
+
+            }
+        });
+
+        let filesName = [{
+                'text': 'html',
+                'children': [{
+                    'text': 'tom.js',
+                    'icon': 'fa fa-file-text-o'
+                }]
+            }, {
+                'text': 'javascript',
+                'children': [{
+                    'text': 'css',
+                    'children': [{
+                        'text': 'animate.css',
+                        'icon': 'fa fa-file-text-o'
+                    }],
+                    'state': {
+                        'opened': true
+                    }
+                }, {
+                    'text': 'js',
+                    'children': [{
+                        'text': 'bootstrap.js',
+                        'icon': 'fa fa-file-text-o'
+                    }, {
+                        'text': 'hplus.min.js',
+                        'icon': 'fa fa-file-text-o'
+                    }],
+                }]
+            },
+            'css'
+        ]
+
+        let jsonTree = document.querySelector('#using_json')
+        $(jsonTree).jstree({
+            'core': {
+                'data': filesName
+            }
+        });
+    </script>
+
+    <style>
+        .choose-file {
+            width: 220px;
+            position: fixed;
+            _position: absolute;
+            left: 0px;
+            bottom: 0px;
+            padding: 4px;
+        }
+        
+        .choose-file a {
+            height: 40px;
+            line-height: 40px;
+            padding: auto;
+        }
+        
+        .choose-file a:hover {
+            color: black;
+        }
+    </style>
+</body>
+
+</html>
