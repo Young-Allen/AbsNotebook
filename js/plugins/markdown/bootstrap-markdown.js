@@ -1,31 +1,10 @@
-/* ===================================================
- * bootstrap-markdown.js v2.7.0
- * http://github.com/toopay/bootstrap-markdown
- * ===================================================
- * Copyright 2013-2014 Taufan Aditya
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ========================================================== */
-
-! function ($) {
-
+! function($) {
     "use strict"; // jshint ;_;
-
 
     /* MARKDOWN CLASS DEFINITION
      * ========================== */
 
-    var Markdown = function (element, options) {
+    var Markdown = function(element, options) {
         // Class Properties
         this.$ns = 'bootstrap-markdown'
         this.$element = $(element)
@@ -54,12 +33,12 @@
         constructor: Markdown
 
         ,
-        __alterButtons: function (name, alter) {
+        __alterButtons: function(name, alter) {
             var handler = this.$handler,
                 isAll = (name == 'all'),
                 that = this
 
-            $.each(handler, function (k, v) {
+            $.each(handler, function(k, v) {
                 var halt = true
                 if (isAll) {
                     halt = false
@@ -74,7 +53,7 @@
         }
 
         ,
-        __buildButtons: function (buttonsArray, container) {
+        __buildButtons: function(buttonsArray, container) {
             var i,
                 ns = this.$ns,
                 handler = this.$handler,
@@ -138,7 +117,7 @@
 
             return container;
         },
-        __setListener: function () {
+        __setListener: function() {
             // Set size and resizable Properties
             var hasRows = typeof this.$textarea.attr('rows') != 'undefined',
                 maxRows = this.$textarea.val().split("\n").length > 5 ? this.$textarea.val().split("\n").length : '5',
@@ -164,7 +143,7 @@
         }
 
         ,
-        __handle: function (e) {
+        __handle: function(e) {
             var target = $(e.currentTarget),
                 handler = this.$handler,
                 callback = this.$callback,
@@ -190,7 +169,7 @@
         }
 
         ,
-        __localize: function (string) {
+        __localize: function(string) {
             var messages = $.fn.markdown.messages,
                 language = this.$options.language
             if (
@@ -204,12 +183,12 @@
         }
 
         ,
-        __getIcon: function (src) {
+        __getIcon: function(src) {
             return typeof src == 'object' ? src[this.$options.iconlibrary] : src;
         }
 
         ,
-        setFullscreen: function (mode) {
+        setFullscreen: function(mode) {
             var $editor = this.$editor,
                 $textarea = this.$textarea
 
@@ -227,7 +206,7 @@
         }
 
         ,
-        showEditor: function () {
+        showEditor: function() {
             var instance = this,
                 textarea,
                 ns = this.$ns,
@@ -240,7 +219,7 @@
                 options = this.$options,
                 editor = $('<div/>', {
                     'class': 'md-editor',
-                    click: function () {
+                    click: function() {
                         instance.focus()
                     }
                 })
@@ -260,10 +239,10 @@
                 // Reduce and/or reorder the button groups
                 if (options.reorderButtonGroups.length > 0) {
                     allBtnGroups = allBtnGroups
-                        .filter(function (btnGroup) {
+                        .filter(function(btnGroup) {
                             return options.reorderButtonGroups.indexOf(btnGroup.name) > -1
                         })
-                        .sort(function (a, b) {
+                        .sort(function(a, b) {
                             if (options.reorderButtonGroups.indexOf(a.name) < options.reorderButtonGroups.indexOf(b.name)) return -1
                             if (options.reorderButtonGroups.indexOf(a.name) > options.reorderButtonGroups.indexOf(b.name)) return 1
                             return 0
@@ -276,7 +255,7 @@
                 }
 
                 if (options.fullscreen.enable) {
-                    editorHeader.append('<div class="md-controls"><a class="md-control md-control-fullscreen" href="#"><span class="' + this.__getIcon(options.fullscreen.icons.fullscreenOn) + '"></span></a></div>').on('click', '.md-control-fullscreen', function (e) {
+                    editorHeader.append('<div class="md-controls"><a class="md-control md-control-fullscreen" href="#"><span class="' + this.__getIcon(options.fullscreen.icons.fullscreenOn) + '"></span></a></div>').on('click', '.md-control-fullscreen', function(e) {
                         e.preventDefault();
                         instance.setFullscreen(true)
                     })
@@ -307,7 +286,7 @@
                     editable.type = container.prop('tagName').toLowerCase()
                     editable.content = container.html()
 
-                    $(container[0].attributes).each(function () {
+                    $(container[0].attributes).each(function() {
                         editable.attrKeys.push(this.nodeName)
                         editable.attrValues.push(this.nodeValue)
                     })
@@ -384,11 +363,11 @@
                 }
 
                 if (this.eventSupported('keydown') && typeof jQuery.hotkeys === 'object') {
-                    editorHeader.find('[data-provider="bootstrap-markdown"]').each(function () {
+                    editorHeader.find('[data-provider="bootstrap-markdown"]').each(function() {
                         var $button = $(this),
                             hotkey = $button.attr('data-hotkey')
                         if (hotkey.toLowerCase() !== '') {
-                            textarea.bind('keydown', hotkey, function () {
+                            textarea.bind('keydown', hotkey, function() {
                                 $button.trigger('click')
                                 return false;
                             })
@@ -417,7 +396,7 @@
             <a href="#" class="exit-fullscreen" title="Exit fullscreen"><span class="' + this.__getIcon(options.fullscreen.icons.fullscreenOff) + '"></span></a>\
           </div>')
 
-                this.$editor.on('click', '.exit-fullscreen', function (e) {
+                this.$editor.on('click', '.exit-fullscreen', function(e) {
                     e.preventDefault()
                     instance.setFullscreen(false)
                 })
@@ -436,7 +415,7 @@
         }
 
         ,
-        parseContent: function () {
+        parseContent: function() {
             var content,
                 callbackContent = this.$options.onPreview(this) // Try to get the content from callback
 
@@ -459,7 +438,7 @@
         }
 
         ,
-        showPreview: function () {
+        showPreview: function() {
             var options = this.$options,
                 container = this.$textarea,
                 afterContainer = container.next(),
@@ -471,7 +450,7 @@
 
             // Give flag that tell the editor enter preview mode
             this.$isPreview = true
-            // Disable all buttons
+                // Disable all buttons
             this.disableButtons('all').enableButtons('cmdPreview')
 
             content = this.parseContent()
@@ -512,7 +491,7 @@
         }
 
         ,
-        hidePreview: function () {
+        hidePreview: function() {
             // Give flag that tell the editor quit preview mode
             this.$isPreview = false
 
@@ -524,7 +503,7 @@
 
             // Enable all buttons
             this.enableButtons('all')
-            // Disable configured disabled buttons
+                // Disable configured disabled buttons
             this.disableButtons(this.$options.disabledButtons)
 
             // Back to the editor
@@ -535,24 +514,24 @@
         }
 
         ,
-        isDirty: function () {
+        isDirty: function() {
             return this.$oldContent != this.getContent()
         }
 
         ,
-        getContent: function () {
+        getContent: function() {
             return this.$textarea.val()
         }
 
         ,
-        setContent: function (content) {
+        setContent: function(content) {
             this.$textarea.val(content)
 
             return this
         }
 
         ,
-        findSelection: function (chunk) {
+        findSelection: function(chunk) {
             var content = this.getContent(),
                 startChunkPosition
 
@@ -572,13 +551,13 @@
         }
 
         ,
-        getSelection: function () {
+        getSelection: function() {
 
             var e = this.$textarea[0]
 
             return (
 
-                ('selectionStart' in e && function () {
+                ('selectionStart' in e && function() {
                     var l = e.selectionEnd - e.selectionStart
                     return {
                         start: e.selectionStart,
@@ -589,7 +568,7 @@
                 }) ||
 
                 /* browser not supported */
-                function () {
+                function() {
                     return null
                 }
 
@@ -598,20 +577,20 @@
         }
 
         ,
-        setSelection: function (start, end) {
+        setSelection: function(start, end) {
 
             var e = this.$textarea[0]
 
             return (
 
-                ('selectionStart' in e && function () {
+                ('selectionStart' in e && function() {
                     e.selectionStart = start
                     e.selectionEnd = end
                     return
                 }) ||
 
                 /* browser not supported */
-                function () {
+                function() {
                     return null
                 }
 
@@ -620,21 +599,21 @@
         }
 
         ,
-        replaceSelection: function (text) {
+        replaceSelection: function(text) {
 
             var e = this.$textarea[0]
 
             return (
 
-                ('selectionStart' in e && function () {
+                ('selectionStart' in e && function() {
                     e.value = e.value.substr(0, e.selectionStart) + text + e.value.substr(e.selectionEnd, e.value.length)
-                    // Set cursor to the last replacement end
+                        // Set cursor to the last replacement end
                     e.selectionStart = e.value.length
                     return this
                 }) ||
 
                 /* browser not supported */
-                function () {
+                function() {
                     e.value += text
                     return jQuery(e)
                 }
@@ -644,7 +623,7 @@
         }
 
         ,
-        getNextTab: function () {
+        getNextTab: function() {
             // Shift the nextTab
             if (this.$nextTab.length == 0) {
                 return null
@@ -662,11 +641,11 @@
         }
 
         ,
-        setNextTab: function (start, end) {
+        setNextTab: function(start, end) {
             // Push new selection into nextTab collections
             if (typeof start == 'string') {
                 var that = this
-                this.$nextTab.push(function () {
+                this.$nextTab.push(function() {
                     return that.findSelection(start)
                 })
             } else if (typeof start == 'number' && typeof end == 'number') {
@@ -682,7 +661,7 @@
         }
 
         ,
-        __parseButtonNameParam: function (nameParam) {
+        __parseButtonNameParam: function(nameParam) {
             var buttons = []
 
             if (typeof nameParam == 'string') {
@@ -695,12 +674,12 @@
         }
 
         ,
-        enableButtons: function (name) {
+        enableButtons: function(name) {
             var buttons = this.__parseButtonNameParam(name),
                 that = this
 
-            $.each(buttons, function (i, v) {
-                that.__alterButtons(buttons[i], function (el) {
+            $.each(buttons, function(i, v) {
+                that.__alterButtons(buttons[i], function(el) {
                     el.removeAttr('disabled')
                 });
             })
@@ -709,12 +688,12 @@
         }
 
         ,
-        disableButtons: function (name) {
+        disableButtons: function(name) {
             var buttons = this.__parseButtonNameParam(name),
                 that = this
 
-            $.each(buttons, function (i, v) {
-                that.__alterButtons(buttons[i], function (el) {
+            $.each(buttons, function(i, v) {
+                that.__alterButtons(buttons[i], function(el) {
                     el.attr('disabled', 'disabled')
                 });
             })
@@ -723,12 +702,12 @@
         }
 
         ,
-        hideButtons: function (name) {
+        hideButtons: function(name) {
             var buttons = this.__parseButtonNameParam(name),
                 that = this
 
-            $.each(buttons, function (i, v) {
-                that.__alterButtons(buttons[i], function (el) {
+            $.each(buttons, function(i, v) {
+                that.__alterButtons(buttons[i], function(el) {
                     el.addClass('hidden');
                 });
             })
@@ -738,12 +717,12 @@
         }
 
         ,
-        showButtons: function (name) {
+        showButtons: function(name) {
             var buttons = this.__parseButtonNameParam(name),
                 that = this
 
-            $.each(buttons, function (i, v) {
-                that.__alterButtons(buttons[i], function (el) {
+            $.each(buttons, function(i, v) {
+                that.__alterButtons(buttons[i], function(el) {
                     el.removeClass('hidden');
                 });
             })
@@ -753,7 +732,7 @@
         }
 
         ,
-        eventSupported: function (eventName) {
+        eventSupported: function(eventName) {
             var isSupported = eventName in this.$element
             if (!isSupported) {
                 this.$element.setAttribute(eventName, 'return;')
@@ -763,55 +742,55 @@
         }
 
         ,
-        keyup: function (e) {
+        keyup: function(e) {
             var blocked = false
             switch (e.keyCode) {
-            case 40: // down arrow
-            case 38: // up arrow
-            case 16: // shift
-            case 17: // ctrl
-            case 18: // alt
-                break
+                case 40: // down arrow
+                case 38: // up arrow
+                case 16: // shift
+                case 17: // ctrl
+                case 18: // alt
+                    break
 
-            case 9: // tab
-                var nextTab
-                if (nextTab = this.getNextTab(), nextTab != null) {
-                    // Get the nextTab if exists
-                    var that = this
-                    setTimeout(function () {
-                        that.setSelection(nextTab.start, nextTab.end)
-                    }, 500)
-
-                    blocked = true
-                } else {
-                    // The next tab memory contains nothing...
-                    // check the cursor position to determine tab action
-                    var cursor = this.getSelection()
-
-                    if (cursor.start == cursor.end && cursor.end == this.getContent().length) {
-                        // The cursor already reach the end of the content
-                        blocked = false
-
-                    } else {
-                        // Put the cursor to the end
-                        this.setSelection(this.getContent().length, this.getContent().length)
+                case 9: // tab
+                    var nextTab
+                    if (nextTab = this.getNextTab(), nextTab != null) {
+                        // Get the nextTab if exists
+                        var that = this
+                        setTimeout(function() {
+                            that.setSelection(nextTab.start, nextTab.end)
+                        }, 500)
 
                         blocked = true
+                    } else {
+                        // The next tab memory contains nothing...
+                        // check the cursor position to determine tab action
+                        var cursor = this.getSelection()
+
+                        if (cursor.start == cursor.end && cursor.end == this.getContent().length) {
+                            // The cursor already reach the end of the content
+                            blocked = false
+
+                        } else {
+                            // Put the cursor to the end
+                            this.setSelection(this.getContent().length, this.getContent().length)
+
+                            blocked = true
+                        }
                     }
-                }
 
-                break
+                    break
 
-            case 13: // enter
-                blocked = false
-                break
-            case 27: // escape
-                if (this.$isFullscreen) this.setFullscreen(false)
-                blocked = false
-                break
+                case 13: // enter
+                    blocked = false
+                    break
+                case 27: // escape
+                    if (this.$isFullscreen) this.setFullscreen(false)
+                    blocked = false
+                    break
 
-            default:
-                blocked = false
+                default:
+                    blocked = false
             }
 
             if (blocked) {
@@ -823,13 +802,13 @@
         }
 
         ,
-        change: function (e) {
+        change: function(e) {
             this.$options.onChange(this);
             return this;
         }
 
         ,
-        focus: function (e) {
+        focus: function(e) {
             var options = this.$options,
                 isHideable = options.hideable,
                 editor = this.$editor
@@ -837,7 +816,7 @@
             editor.addClass('active')
 
             // Blur other markdown(s)
-            $(document).find('.md-editor').each(function () {
+            $(document).find('.md-editor').each(function() {
                 if ($(this).attr('id') != editor.attr('id')) {
                     var attachedMarkdown
 
@@ -859,7 +838,7 @@
         }
 
         ,
-        blur: function (e) {
+        blur: function(e) {
             var options = this.$options,
                 isHideable = options.hideable,
                 editor = this.$editor,
@@ -877,7 +856,7 @@
                             content = this.getContent(),
                             currentContent = (typeof markdown == 'object') ? markdown.toHTML(content) : content
 
-                        $(editable.attrKeys).each(function (k, v) {
+                        $(editable.attrKeys).each(function(k, v) {
                             oldElement.attr(editable.attrKeys[k], editable.attrValues[k])
                         })
 
@@ -905,8 +884,8 @@
 
     var old = $.fn.markdown
 
-    $.fn.markdown = function (option) {
-        return this.each(function () {
+    $.fn.markdown = function(option) {
+        return this.each(function() {
             var $this = $(this),
                 data = $this.data('markdown'),
                 options = typeof option == 'object' && option
@@ -930,7 +909,7 @@
 
         /* Buttons Properties */
         buttons: [
-      [{
+            [{
                 name: 'groupFont',
                 data: [{
                     name: 'cmdBold',
@@ -941,7 +920,7 @@
                         fa: 'fa fa-bold',
                         'fa-3': 'icon-bold'
                     },
-                    callback: function (e) {
+                    callback: function(e) {
                         // Give/remove ** surround the selection
                         var chunk, cursor, selected = e.getSelection(),
                             content = e.getContent()
@@ -966,7 +945,7 @@
                         // Set the cursor
                         e.setSelection(cursor, cursor + chunk.length)
                     }
-        }, {
+                }, {
                     name: 'cmdItalic',
                     title: 'Italic',
                     hotkey: 'Ctrl+I',
@@ -975,7 +954,7 @@
                         fa: 'fa fa-italic',
                         'fa-3': 'icon-italic'
                     },
-                    callback: function (e) {
+                    callback: function(e) {
                         // Give/remove * surround the selection
                         var chunk, cursor, selected = e.getSelection(),
                             content = e.getContent()
@@ -1000,7 +979,7 @@
                         // Set the cursor
                         e.setSelection(cursor, cursor + chunk.length)
                     }
-        }, {
+                }, {
                     name: 'cmdHeading',
                     title: 'Heading',
                     hotkey: 'Ctrl+H',
@@ -1009,7 +988,7 @@
                         fa: 'fa fa-header',
                         'fa-3': 'icon-font'
                     },
-                    callback: function (e) {
+                    callback: function(e) {
                         // Append/remove ### surround the selection
                         var chunk, cursor, selected = e.getSelection(),
                             content = e.getContent(),
@@ -1039,8 +1018,8 @@
                         // Set the cursor
                         e.setSelection(cursor, cursor + chunk.length)
                     }
-        }]
-      }, {
+                }]
+            }, {
                 name: 'groupLink',
                 data: [{
                     name: 'cmdUrl',
@@ -1051,7 +1030,7 @@
                         fa: 'fa fa-link',
                         'fa-3': 'icon-link'
                     },
-                    callback: function (e) {
+                    callback: function(e) {
                         // Give [] surround the selection and prepend the link
                         var chunk, cursor, selected = e.getSelection(),
                             content = e.getContent(),
@@ -1077,7 +1056,7 @@
                             e.setSelection(cursor, cursor + chunk.length)
                         }
                     }
-        }, {
+                }, {
                     name: 'cmdImage',
                     title: 'Image',
                     hotkey: 'Ctrl+G',
@@ -1086,7 +1065,7 @@
                         fa: 'fa fa-picture-o',
                         'fa-3': 'icon-picture'
                     },
-                    callback: function (e) {
+                    callback: function(e) {
                         // Give ![] surround the selection and prepend the image link
                         var chunk, cursor, selected = e.getSelection(),
                             content = e.getContent(),
@@ -1115,8 +1094,8 @@
                             e.setSelection(cursor, cursor + chunk.length)
                         }
                     }
-        }]
-      }, {
+                }]
+            }, {
                 name: 'groupMisc',
                 data: [{
                         name: 'cmdList',
@@ -1127,7 +1106,7 @@
                             fa: 'fa fa-list',
                             'fa-3': 'icon-list-ul'
                         },
-                        callback: function (e) {
+                        callback: function(e) {
                             // Prepend/Give - surround the selection
                             var chunk, cursor, selected = e.getSelection(),
                                 content = e.getContent()
@@ -1138,7 +1117,7 @@
                                 chunk = e.__localize('list text here')
 
                                 e.replaceSelection('- ' + chunk)
-                                // Set the cursor
+                                    // Set the cursor
                                 cursor = selected.start + 2
 
                             } else {
@@ -1155,7 +1134,7 @@
                                     list = selected.text.split('\n')
                                     chunk = list[0]
 
-                                    $.each(list, function (k, v) {
+                                    $.each(list, function(k, v) {
                                         list[k] = '- ' + v
                                     })
 
@@ -1169,7 +1148,7 @@
                             // Set the cursor
                             e.setSelection(cursor, cursor + chunk.length)
                         }
-        },
+                    },
                     {
                         name: 'cmdListO',
                         hotkey: 'Ctrl+O',
@@ -1179,7 +1158,7 @@
                             fa: 'fa fa-list-ol',
                             'fa-3': 'icon-list-ol'
                         },
-                        callback: function (e) {
+                        callback: function(e) {
 
                             // Prepend/Give - surround the selection
                             var chunk, cursor, selected = e.getSelection(),
@@ -1190,7 +1169,7 @@
                                 // Give extra word
                                 chunk = e.__localize('list text here')
                                 e.replaceSelection('1. ' + chunk)
-                                // Set the cursor
+                                    // Set the cursor
                                 cursor = selected.start + 3
 
                             } else {
@@ -1207,7 +1186,7 @@
                                     list = selected.text.split('\n')
                                     chunk = list[0]
 
-                                    $.each(list, function (k, v) {
+                                    $.each(list, function(k, v) {
                                         list[k] = '1. ' + v
                                     })
 
@@ -1221,7 +1200,7 @@
                             // Set the cursor
                             e.setSelection(cursor, cursor + chunk.length)
                         }
-        },
+                    },
                     {
                         name: 'cmdCode',
                         hotkey: 'Ctrl+K',
@@ -1231,7 +1210,7 @@
                             fa: 'fa fa-code',
                             'fa-3': 'icon-code'
                         },
-                        callback: function (e) {
+                        callback: function(e) {
 
                             // Give/remove ** surround the selection
                             var chunk, cursor, selected = e.getSelection(),
@@ -1257,7 +1236,7 @@
                             // Set the cursor
                             e.setSelection(cursor, cursor + chunk.length)
                         }
-        },
+                    },
                     {
                         name: 'cmdQuote',
                         hotkey: 'Ctrl+Q',
@@ -1267,7 +1246,7 @@
                             fa: 'fa fa-quote-left',
                             'fa-3': 'icon-quote-left'
                         },
-                        callback: function (e) {
+                        callback: function(e) {
                             // Prepend/Give - surround the selection
                             var chunk, cursor, selected = e.getSelection(),
                                 content = e.getContent()
@@ -1277,7 +1256,7 @@
                                 // Give extra word
                                 chunk = e.__localize('quote here')
                                 e.replaceSelection('> ' + chunk)
-                                // Set the cursor
+                                    // Set the cursor
                                 cursor = selected.start + 2
 
                             } else {
@@ -1294,7 +1273,7 @@
                                     list = selected.text.split('\n')
                                     chunk = list[0]
 
-                                    $.each(list, function (k, v) {
+                                    $.each(list, function(k, v) {
                                         list[k] = '> ' + v
                                     })
 
@@ -1308,8 +1287,9 @@
                             // Set the cursor
                             e.setSelection(cursor, cursor + chunk.length)
                         }
-        }]
-      }, {
+                    }
+                ]
+            }, {
                 name: 'groupUtil',
                 data: [{
                     name: 'cmdPreview',
@@ -1323,7 +1303,7 @@
                         fa: 'fa fa-search',
                         'fa-3': 'icon-search'
                     },
-                    callback: function (e) {
+                    callback: function(e) {
                         // Check the preview mode and toggle based on this flag
                         var isPreview = e.$isPreview,
                             content
@@ -1335,9 +1315,9 @@
                             e.hidePreview()
                         }
                     }
-        }]
-      }]
-    ],
+                }]
+            }]
+        ],
         additionalButtons: [], // Place to hook more buttons by code
         reorderButtonGroups: [],
         hiddenButtons: [], // Default hidden buttons
@@ -1360,13 +1340,13 @@
         },
 
         /* Events hook */
-        onShow: function (e) {},
-        onPreview: function (e) {},
-        onSave: function (e) {},
-        onBlur: function (e) {},
-        onFocus: function (e) {},
-        onChange: function (e) {},
-        onFullscreen: function (e) {}
+        onShow: function(e) {},
+        onPreview: function(e) {},
+        onSave: function(e) {},
+        onBlur: function(e) {},
+        onFocus: function(e) {},
+        onChange: function(e) {},
+        onFullscreen: function(e) {}
     }
 
     $.fn.markdown.Constructor = Markdown
@@ -1375,14 +1355,14 @@
     /* MARKDOWN NO CONFLICT
      * ==================== */
 
-    $.fn.markdown.noConflict = function () {
+    $.fn.markdown.noConflict = function() {
         $.fn.markdown = old
         return this
     }
 
     /* MARKDOWN GLOBAL FUNCTION & DATA-API
      * ==================================== */
-    var initMarkdown = function (el) {
+    var initMarkdown = function(el) {
         var $this = el
 
         if ($this.data('markdown')) {
@@ -1393,11 +1373,11 @@
         $this.markdown()
     }
 
-    var blurNonFocused = function (e) {
+    var blurNonFocused = function(e) {
         var $activeElement = $(document.activeElement)
 
         // Blur event
-        $(document).find('.md-editor').each(function () {
+        $(document).find('.md-editor').each(function() {
             var $this = $(this),
                 focused = $activeElement.closest('.md-editor')[0] === this,
                 attachedMarkdown = $this.find('textarea').data('markdown') ||
@@ -1410,15 +1390,15 @@
     }
 
     $(document)
-        .on('click.markdown.data-api', '[data-provide="markdown-editable"]', function (e) {
+        .on('click.markdown.data-api', '[data-provide="markdown-editable"]', function(e) {
             initMarkdown($(this))
             e.preventDefault()
         })
-        .on('click focusin', function (e) {
+        .on('click focusin', function(e) {
             blurNonFocused(e)
         })
-        .ready(function () {
-            $('textarea[data-provide="markdown"]').each(function () {
+        .ready(function() {
+            $('textarea[data-provide="markdown"]').each(function() {
                 initMarkdown($(this))
             })
         })

@@ -25,8 +25,8 @@
     <script src="./js/hplus.js"></script>
     <script type="text/javascript" src="./js/contabs.js"></script>
     <script src="./js/content.js"></script>
-
-
+    <script src="./js/hide-folder.js"></script>
+    <script type="module" src="/main.js"></script>
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow: hidden;">
@@ -71,10 +71,12 @@
                     </ul>
                 </nav>
             </div>
-            <!-- 主题页面栏 -->
+            <!-- markdown页面 -->
             <div class="row J_mainContent" id="content-main">
                 <iframe class="J_iframe" name="iframe0" width="80%" height="100%" src="form_markdown.html?v=4.1" frameborder="0" data-id="form_markdown.html" seamless></iframe>
+                <div class="markdown-detail">当前文件详细信息</div>
             </div>
+
         </div>
         <!--右侧部分结束-->
 
@@ -111,89 +113,6 @@
         <!--右侧边栏结束-->
     </div>
 
-    <script type="module" src="/main.js"></script>
-
-    <script>
-        //按钮点击显示和隐藏左侧侧边栏
-        let close_left_bar = document.querySelector('.close-left-bar')
-        let row = document.querySelector('.row')
-        close_left_bar.onclick = function() {
-            if (row.style.display === 'none') {
-                row.style.display = 'block'
-            } else {
-                row.style.display = 'none'
-            }
-        }
-
-        // jstree的视图
-        let jsTree = document.getElementById('jstree1')
-        $(jsTree).jstree({
-            'core': {
-                'check_callback': true
-            },
-            'plugins': ['types', 'dnd'],
-            'types': {
-                'default': {
-                    'icon': 'fa fa-folder'
-                },
-                'html': {
-                    'icon': 'fa fa-file-code-o'
-                },
-                'svg': {
-                    'icon': 'fa fa-file-picture-o'
-                },
-                'css': {
-                    'icon': 'fa fa-file-code-o'
-                },
-                'img': {
-                    'icon': 'fa fa-file-image-o'
-                },
-                'js': {
-                    'icon': 'fa fa-file-text-o'
-                }
-
-            }
-        });
-
-        let filesName = [{
-                'text': 'html',
-                'children': [{
-                    'text': 'tom.js',
-                    'icon': 'fa fa-file-text-o'
-                }]
-            }, {
-                'text': 'javascript',
-                'children': [{
-                    'text': 'css',
-                    'children': [{
-                        'text': 'animate.css',
-                        'icon': 'fa fa-file-text-o'
-                    }],
-                    'state': {
-                        'opened': true
-                    }
-                }, {
-                    'text': 'js',
-                    'children': [{
-                        'text': 'bootstrap.js',
-                        'icon': 'fa fa-file-text-o'
-                    }, {
-                        'text': 'hplus.min.js',
-                        'icon': 'fa fa-file-text-o'
-                    }],
-                }]
-            },
-            'css'
-        ]
-
-        let jsonTree = document.querySelector('#using_json')
-        $(jsonTree).jstree({
-            'core': {
-                'data': filesName
-            }
-        });
-    </script>
-
     <style>
         .choose-file {
             width: 220px;
@@ -212,6 +131,13 @@
         
         .choose-file a:hover {
             color: black;
+        }
+        
+        .markdown-detail {
+            float: right;
+            width: 20%;
+            background-color: rgb(231, 238, 238);
+            height: 100%;
         }
     </style>
 </body>
