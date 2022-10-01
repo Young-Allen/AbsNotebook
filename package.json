@@ -1,5 +1,5 @@
 {
-  "name": "notebook",
+  "name": "cybernotebook",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,7 +12,7 @@
     "vite": "^3.1.0"
   },
   "dependencies": {
-    "browserify-fs": "^1.0.0",
-    "require.js": "^1.0.0"
+    "markdown-it": "^13.0.1",
+    "turndown": "^7.1.1"
   }
 }

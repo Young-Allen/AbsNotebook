@@ -4,140 +4,54 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CyberNotebook</title>
-
-    <link href="css/bootstrap.min.css?v=3.3.7" rel="stylesheet" />
-    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet" />
-    <link href="css/animate.css" rel="stylesheet" />
-    <link href="css/style.css?v=4.1.0" rel="stylesheet" />
-    <link href="css/plugins/jsTree/style.min.css" rel="stylesheet">
-    <link href="css/jquery.contextMenu.min.css" rel="stylesheet" />
-
-    <!-- 全局js -->
-    <script src="./js/jquery.min.js?v=2.1.4"></script>
-    <script src="./js/bootstrap.min.js?v=3.3.7"></script>
-    <script src="./js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="./js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="./js/plugins/contextMenu/jquery.contextMenu.min.js"></script>
-    <!-- jsTree plugin javascript -->
-    <script src="./js/plugins/jsTree/jstree.js"></script>
-    <!-- 自定义js -->
-    <script src="./js/hplus.js"></script>
-    <script type="text/javascript" src="./js/contabs.js"></script>
-    <script src="./js/content.js"></script>
-    <script src="./js/hide-folder.js"></script>
-    <script type="module" src="/main.js"></script>
+    <title>Vite App</title>
+    <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
 </head>
 
-<body class="fixed-sidebar full-height-layout gray-bg" style="overflow: hidden;">
-    <div id="wrapper">
-        <!--左侧导航开始-->
-        <nav class="navbar-static-side">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <div class="ibox-tools" style="text-align: center;">
-                                <p style="width:100%;">文件</p>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <div id="using_json"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="ibox-title choose-file" style="text-align: center;">
-                        <a style="width:100%;" class="open-folder">打开文件夹</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <!--左侧导航结束-->
-
-        <!--右侧部分开始-->
-        <div id="page-wrapper" class="gray-bg dashbard-1">
-            <!-- 顶端主题栏 -->
-            <div class="row border-bottom">
-                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0;">
-                    <div class="navbar-header">
-                        <!-- navbar-minimalize -->
-                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary close-left-bar" href="#"><i class="fa fa-bars"></i></a>
-                    </div>
-                    <ul class="nav navbar-top-links navbar-right">
-                        <li class="dropdown hidden-xs">
-                            <a class="right-sidebar-toggle" aria-expanded="false"> <i class="fa fa-tasks"></i> 主题 </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <!-- markdown页面 -->
-            <div class="row J_mainContent" id="content-main">
-                <iframe class="J_iframe" name="iframe0" width="80%" height="100%" src="form_markdown.html?v=4.1" frameborder="0" data-id="form_markdown.html" seamless></iframe>
-                <div class="markdown-detail">当前文件详细信息</div>
-            </div>
-
+<body>
+    <div>
+        <div>
+            <div class="showMarkdown">随便写点什么...</div>
         </div>
-        <!--右侧部分结束-->
-
-        <!--右侧边栏开始-->
-        <div id="right-sidebar">
-            <div class="sidebar-container">
-                <ul class="nav nav-tabs navs-3">
-                    <li class="active">
-                        <a data-toggle="tab" href="#tab-1"> <i class="fa fa-gear"></i> 主题 </a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div id="tab-1" class="tab-pane active">
-                        <div class="skin-setttings">
-                            <div class="setings-item default-skin nb">
-                                <span class="skin-name">
-                                    <a href="#" class="s-skin-0">
-                                        默认皮肤
-                                    </a>
-                                </span>
-                            </div>
-                            <div class="setings-item blue-skin nb">
-                                <span class="skin-name">
-                                    <a href="#" class="s-skin-1">
-                                        蓝色主题
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--右侧边栏结束-->
     </div>
 
+
+    <script type="module" src="/main.js"></script>
+
+    <script>
+    </script>
+
     <style>
-        .choose-file {
-            width: 220px;
-            position: fixed;
-            _position: absolute;
-            left: 0px;
-            bottom: 0px;
-            padding: 4px;
+        .test_box {
+            resize: vertical;
+            font-size: 20px;
+            border-radius: 20px;
+            width: 100%;
+            min-height: 120px;
+            _height: 120px;
+            margin-left: auto;
+            margin-right: auto;
+            outline: 0;
+            border: 1px solid #a0b3d6;
+            word-wrap: break-word;
+            overflow-x: hidden;
+            overflow-y: auto;
+            _overflow-y: visible;
         }
         
-        .choose-file a {
-            height: 40px;
-            line-height: 40px;
-            padding: auto;
+        .showMarkdown {
+            min-height: 120px;
+            width: 80vw;
+            border-radius: 20px;
+            height: fit-content;
+            padding: 10px 10px;
         }
         
-        .choose-file a:hover {
-            color: black;
-        }
-        
-        .markdown-detail {
-            float: right;
-            width: 20%;
-            background-color: rgb(231, 238, 238);
-            height: 100%;
+        textarea:focus {
+            box-shadow: 0 0 10px rgba(81, 203, 238, 1);
+            padding: 3px 0px 3px 3px;
+            margin: 5px 1px 3px 0px;
+            border: 1px solid rgba(81, 203, 238, 1);
         }
     </style>
 </body>
