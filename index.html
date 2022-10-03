@@ -4,56 +4,109 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+    <title>VeryNotebook</title>
+    <link href="css/font-awesome.min.css" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/jsTree/style.min.css" rel="stylesheet">
+    <!-- jsTree plugin javascript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script src="js/jstree.js"></script>
 </head>
 
 <body>
-    <div>
-        <div>
-            <div class="showMarkdown">随便写点什么...</div>
+    <!-- 左侧文件夹栏 -->
+    <div id="mySidenav" class="sidenav">
+        <div class="ibox-content">
+            文件
+        </div>
+        <div class="ibox-content">
+            <div id="using_json"></div>
+        </div>
+        <div class="col-sm-12">
+            <div class="ibox-title choose-file" style="text-align: center;">
+                <a style="width:100%;" class="open-folder">打开文件夹</a>
+            </div>
         </div>
     </div>
 
+    <div id="main">
+        <!-- 上方导航栏 -->
+        <div style="width: 100vw; background-color:#f9f9f9" class="topnav">
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <!-- 主体部分 -->
+            <div class="edit-container">
+
+                <!-- 标题栏 -->
+                <div class="title-nav">
+                    <h1 id="title"><strong>我是标题</strong></h1>
+                    <div class="button-cont">
+                        <button title="上移" class="moveUp"><img src="img/up.png"/></button>
+                        <button title="下移" class="moveDwon"><img src="img/down.png"/></button>
+                        <button title="上方新建" class="CreateUp"><img src="img/new-up.png"/></button>
+                        <button title="下方新建" class="CreateDown"><img src="img/new-down.png"/></button>
+                        <button title="删除" class="delete"><img src="img/delete.png"/></button>
+                    </div>
+                </div>
+
+                <!-- 编辑区 -->
+                <div class="edit-space">
+                    <div class="markdown-box">
+                        <div class="showMarkdown">0随便写点什么...</div>
+                        <div class="showMarkdown">1随便写点什么...</div>
+                        <div class="showMarkdown">2随便写点什么...</div>
+                        <div class="showMarkdown">3随便写点什么...</div>
+                        <div class="showMarkdown">4随便写点什么...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧边栏：显示cell信息 -->
+            <div class="showDetail">
+                <div class="detail" id="asdad">Cell: [<span class="activeNum">未选中</span>]</div>
+                <div class="detail">创建时间：<span class="createTime">2022年10月3日20:36:48</span></div>
+                <div class="detail">作者：<span class="author">XXXTENTX</span></div>
+                <div class="detail">备注：
+                    <div class="remarks">单击此处，输入备注信息</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script type="module" src="/main.js"></script>
+    <script src="js/read-files.js"></script>
 
     <script>
-    </script>
+        let openAndClose = 0;
+        //显示和隐藏侧边栏
+        function openNav() {
+            if (openAndClose === 0) {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                document.querySelector('.showDetail').style.width = "0";
 
-    <style>
-        .test_box {
-            resize: vertical;
-            font-size: 20px;
-            border-radius: 20px;
-            width: 100%;
-            min-height: 120px;
-            _height: 120px;
-            margin-left: auto;
-            margin-right: auto;
-            outline: 0;
-            border: 1px solid #a0b3d6;
-            word-wrap: break-word;
-            overflow-x: hidden;
-            overflow-y: auto;
-            _overflow-y: visible;
-        }
-        
-        .showMarkdown {
-            min-height: 120px;
-            width: 80vw;
-            border-radius: 20px;
-            height: fit-content;
-            padding: 10px 10px;
-        }
-        
-        textarea:focus {
-            box-shadow: 0 0 10px rgba(81, 203, 238, 1);
-            padding: 3px 0px 3px 3px;
-            margin: 5px 1px 3px 0px;
-            border: 1px solid rgba(81, 203, 238, 1);
-        }
-    </style>
+                let showDetailList = document.querySelector('.showDetail')
+                for (let i = 0; i < showDetailList.children.length; i++) {
+                    showDetailList.children[i].style.display = 'none'
+                }
+                openAndClose = 1
+            } else if (openAndClose === 1) {
+                document.getElementById("mySidenav").style.width = "0";
+                document.querySelector('.showDetail').style.width = "17vw";
+                document.querySelector('.showDetail').style.width = "17vw";
+                document.getElementById("main").style.marginLeft = "0";
+
+                let showDetailList = document.querySelector('.showDetail')
+                for (let i = 0; i < showDetailList.children.length; i++) {
+                    showDetailList.children[i].style.display = ''
+                }
+                openAndClose = 0
+            }
+        };
+    </script>
 </body>
 
 </html>
