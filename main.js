@@ -1,6 +1,7 @@
 import './css/main.css'
 import markdownIt from 'markdown-it'
 import TurndownService from 'turndown'
+import hljs from 'highlight.js';
 
 //markdown转html
 const md = new markdownIt();
@@ -145,10 +146,12 @@ document.querySelector('.delete').addEventListener('click', function() {
     listenClick()
 });
 
+
+
 //双击编辑框事件
 for (let i = 0; i < marklist.children.length; i++) {
     marklist.children[i].addEventListener('dblclick', function() {
-        console.log(marklist.children[i]);
+        // console.log(this.scrollHeight);
         for (let j = 0; j < marklist.children.length; j++) {
             marklist.children[j].className = ''
             marklist.children[j].classList.add('showMarkdown')
@@ -171,9 +174,11 @@ for (let i = 0; i < marklist.children.length; i++) {
         newObj.className = "test_box"
         newObj.rows = "5"
         newObj.value = old
+        console.log(newObj.className);
         makeExpandingArea(newObj);
 
         this.append(newObj)
+
         newObj.focus()
         newObj.onblur = function() {
             that.innerHTML = md.render(this.value)
