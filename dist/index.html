@@ -5,14 +5,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VeryNotebook</title>
-    <link href="css/font-awesome.min.css" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/jsTree/style.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet" />
+
+
+
+
     <!-- jsTree plugin javascript -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.slimscroll.min.js"></script>
-    <script src="js/jstree.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.slimscroll.min.js"></script>
+    <script src="../js/jstree.js"></script>
+    <script type="module" crossorigin src="./assets/index.00785fb8.js"></script>
+    <link rel="stylesheet" href="./assets/index.1009fc4f.css">
 </head>
 
 <body>
@@ -45,11 +47,11 @@
                 <div class="title-nav">
                     <h1 id="title"><strong>点击修改标题</strong></h1>
                     <div class="button-cont">
-                        <button title="上移" class="moveUp"><img src="img/up.png"/></button>
-                        <button title="下移" class="moveDwon"><img src="img/down.png"/></button>
-                        <button title="上方新建" class="CreateUp"><img src="img/new-up.png"/></button>
-                        <button title="下方新建" class="CreateDown"><img src="img/new-down.png"/></button>
-                        <button title="删除" class="delete"><img src="img/delete.png"/></button>
+                        <button title="上移" class="moveUp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAH1JREFUOE/t0sENgCAMheGfTRxFJzNOopvpKOYZSYhCC5GjvcCBfoRHA50rdPb4we+J1mQ4ACugdQIO61oPjJgM7VUmaoEpJkS1e2gJzGHxpSaaAy3MRZ9gDWaiKdiCFdEUnIHx/sWWgVSmG7CoyRubFvg6+4PNkb0aumd4Ajc7FhU2Xc9NAAAAAElFTkSuQmCC"/></button>
+                        <button title="下移" class="moveDwon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAIZJREFUOE/t08ENgDAIQNHfTXQTV3ES42Q6iqMYYjBNbRFij3rTwiuFmuj8pM4eP/i9o3kPF2ACZuAI0BuwA6vk5OAAyKJgXlTiJW/UAsopR9AHVlaom3jQKtYC5buFNjELbKEm9gaWqL7fA6jdBM+vp8eXfBPzVBi4jleop8IQ+oOhdlWDT+IUGxV2yR/NAAAAAElFTkSuQmCC"/></button>
+                        <button title="上方新建" class="CreateUp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAANlJREFUOE/dlMsRwjAMRDedQCVAJdAZUAnphJTCPMbLGGFHyeSGL/Ho87SyYg/6XVdJO0mnhi81DSHiIelYbJOkffBT6FwKtuBTDTQMEIl8WSj1HjtxvTUaaBjJKEAleyfX0Nm2AV4kcW4kjWUPkHatCIWLzhQgSSy3BdxA7NGfKowBEZhOtg6IU8bXA9o+V+AzlDqoB+SsD4nc+xqFi1r/H6B/naztr6vn4NZ/+MxIxd+dcnxt/GBk3KbCVTcjVmhNOVOx+uptBtLi0jPKir2HUr/SWULmv70AS1opsJAxWacAAAAASUVORK5CYII="/></button>
+                        <button title="下方新建" class="CreateDown"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAM5JREFUOE/VlNENwjAMRK+bwCYwCTAJMAkwCd2EjoIeslGwUmJQhMT9tGqS18s5ziDpKmmlPpoGSYuOwBFgV/0MSAzTN9ZrDk+W6bIAZov2KEpUBALjJGRULUrNIRFklHKYAT3nZLb8P0CKs2nY/SjDvaRtA5iucjpHvxw4FqOtiseGsXL8LRwg2QA5SzraO9/oFEA3G9tlbLpDwiYfoH6drQ1GT5dt2HTIBCAO9QW+TcAu380c9KUoDj3YbDItYf5jqj2nS+wUh/JMZRbJd84JJ/AxQg2XAAAAAElFTkSuQmCC"/></button>
+                        <button title="删除" class="delete"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAARtJREFUOE+VlYuNwkAMRIdOuEqATkgliEqASoBK7jo59FZx5Ez2I1aKFLHeZ3t2YnZqr3Nnj62XpD+P2TUOAbvVDszxe0mTpHsLSABPrIMkoByqLZIBe6dNKlZUSMCoxYECJcGUW77M0J/RSdv/lXSN9jPwOOvmQH4v7UjinYvIl/Gf9XTgM8kAAF2pIOLYf9hlAKSIkiQD4/DJKspJeKdaWswJq0ACyPYNMOy1FOY+XAk8a9arECCXuejuQG+JS+gBgRFDV2U5ED+ywtAjoMdvgJ5xBPSONkDXZAR0zTdAN/cIuDJ1TUM3sieICRQ+XJm6B8xebH3akXwxdQ0Y5q7OOiNvTN0CxtQZDR0qLCMrB7YmNsHo11vVv4APJbNbFVpE3rkAAAAASUVORK5CYII="/></button>
                     </div>
                 </div>
 
@@ -76,8 +78,8 @@
         </div>
     </div>
 
-    <script type="module" src="/main.js"></script>
-    <script src="js/read-files.js"></script>
+
+    <script src="../js/read-files.js"></script>
 
     <script>
         let openAndClose = 0;
