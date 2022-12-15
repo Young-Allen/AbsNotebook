@@ -13,4 +13,4 @@ npm run dev
 ```
 
 # DEMO
-see demo click[demo](https://young-allen.github.io/AbsNotebook/dist/index.html)
+see demo click [demo](https://young-allen.github.io/AbsNotebook/dist/index.html)
