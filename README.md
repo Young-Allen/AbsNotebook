@@ -1,4 +1,6 @@
 # AbsNotebook
+前端模仿jupyter notebook实现的markdown笔记
+
 使用markdown-it和turndown及原生js书写的markdown笔记。
 1. 基本的上移、下移、上方新建、下方新建、删除单元格功能实现完成
 2. 实现选中单元格显示ID，单击输入备注信息，作者和创建实现等信息
